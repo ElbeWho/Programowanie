@@ -5,7 +5,7 @@ using namespace std;
 float sumaF= 0;
 double sumaD=0;
 int main(){
-    cout << fixed << setprecision(5);
+    cout << fixed << setprecision(20);
 
     for (int i=0; i<=20; i++){
         sumaD += 1/pow(10, i);
