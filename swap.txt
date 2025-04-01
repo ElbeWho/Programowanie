@@ -1,0 +1,30 @@
+
+#include <iostream>
+
+using namespace std;
+
+// Funkcja zamieniająca wartości dwóch liczb całkowitych
+void swap(int &a, int &b) {
+    int temp = a; // Przechowanie wartości a
+    a = b;        // Przypisanie wartości b do a
+    b = temp;     // Przypisanie przechowanej wartości a do b
+}
+
+int main() {
+    int x, y;
+
+    // Pobranie dwóch liczb od użytkownika
+    cout << "Podaj dwie liczby calkowite: ";
+    cin >> x >> y;
+
+    // Wyświetlenie wartości przed zamianą
+    cout << "Przed zamiana: x = " << x << ", y = " << y << endl;
+
+    // Wywołanie funkcji swap
+    swap(x, y);
+
+    // Wyświetlenie wartości po zamianie
+    cout << "Po zamianie: x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
