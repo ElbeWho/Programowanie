@@ -7,12 +7,8 @@
 
 using namespace std;
 
-struct Trojkat {
-    double a, b, c;
-};
-
 int main() {
-    string filename = "dane.txt";
+    string filename = "nowy.txt";
     ifstream file(filename);
 
     if (!file.is_open()) {
@@ -21,7 +17,7 @@ int main() {
     }
 
     vector<string> naglowki;
-    vector<Trojkat> trojkaty;
+    vector<double> a_vec, b_vec, c_vec;
 
     // Wczytanie nagłówka
     string linia;
@@ -37,13 +33,15 @@ int main() {
     while (file >> a >> b >> c) {
         // Sprawdzenie warunku istnienia trójkąta
         if (a + b > c && a + c > b && b + c > a) {
-            trojkaty.push_back({a, b, c});
+            a_vec.push_back(a);
+            b_vec.push_back(b);
+            c_vec.push_back(c);
         }
     }
 
     file.close();
 
-    if (trojkaty.empty()) {
+    if (a_vec.empty()) {
         cout << "Brak poprawnych trójkątów do analizy." << endl;
         return 0;
     }
@@ -61,10 +59,10 @@ int main() {
         switch (wybor) {
             case 1: {
                 double suma = 0;
-                for (const auto& t : trojkaty) {
-                    suma += t.a + t.b + t.c;
+                for (size_t i = 0; i < a_vec.size(); ++i) {
+                    suma += a_vec[i] + b_vec[i] + c_vec[i];
                 }
-                double srednia = suma / trojkaty.size();
+                double srednia = suma / a_vec.size();
                 cout << fixed << setprecision(2);
                 cout << "Średni obwód: " << srednia << endl;
                 break;
@@ -77,9 +75,9 @@ int main() {
                     break;
                 }
 
-                for (const auto& t : trojkaty) {
-                    if (t.a > 5 && t.c > 5) {
-                        output << fixed << setprecision(2) << t.b << endl;
+                for (size_t i = 0; i < a_vec.size(); ++i) {
+                    if (a_vec[i] > 5 && c_vec[i] > 5) {
+                        output << fixed << setprecision(2) << b_vec[i] << endl;
                     }
                 }
 
