@@ -24,6 +24,7 @@ int main() {
     getline(file, linia);
     stringstream ss(linia);
     string kolumna;
+    cout << kolumna<< endl;
     while (ss >> kolumna) {
         naglowki.push_back(kolumna);
     }
